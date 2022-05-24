@@ -7,11 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2607B69F283A3D4000FBC355 /* private_pkcs1.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2607B69D283A3CCC00FBC355 /* private_pkcs1.pem */; };
+		2607B6A0283A3D4000FBC355 /* public_pkcs1.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2607B69E283A3CCC00FBC355 /* public_pkcs1.pem */; };
+		2607B6A2283BAE6300FBC355 /* DeveloperCertification.cer in Resources */ = {isa = PBXBuildFile; fileRef = 2607B6A1283BAE6300FBC355 /* DeveloperCertification.cer */; };
+		2639AC5E280E61D1004A2556 /* Date+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2639AC5D280E61D1004A2556 /* Date+Basic.swift */; };
+		2639AC62280FF1E5004A2556 /* Data+SecKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2639AC61280FF1E5004A2556 /* Data+SecKey.swift */; };
+		2639AC672814011C004A2556 /* SecCertificate+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2639AC662814011C004A2556 /* SecCertificate+Basic.swift */; };
 		26D13F512807B70D0066521C /* WHFoundationExtension.docc in Sources */ = {isa = PBXBuildFile; fileRef = 26D13F502807B70D0066521C /* WHFoundationExtension.docc */; };
 		26D13F572807B70D0066521C /* WHFoundationExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D13F4C2807B70D0066521C /* WHFoundationExtension.framework */; };
 		26D13F5C2807B70D0066521C /* WHFoundationExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D13F5B2807B70D0066521C /* WHFoundationExtensionTests.swift */; };
 		26D13F5D2807B70D0066521C /* WHFoundationExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D13F4F2807B70D0066521C /* WHFoundationExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26D13F692807B7970066521C /* Data+Sub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D13F682807B7970066521C /* Data+Sub.swift */; };
+		26D13F692807B7970066521C /* Data+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D13F682807B7970066521C /* Data+Basic.swift */; };
+		26D13F6D28090EA40066521C /* Data+CommonCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D13F6C28090EA40066521C /* Data+CommonCrypto.swift */; };
+		26D13F72280928AD0066521C /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D13F71280928AD0066521C /* String+Date.swift */; };
+		26D13F74280977090066521C /* String+UrlEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D13F73280977090066521C /* String+UrlEncoding.swift */; };
+		26D7E6AC280A82AB00204E68 /* String+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7E6AB280A82AB00204E68 /* String+Color.swift */; };
+		26D7E6B3280A865600204E68 /* Dictionary+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7E6B2280A865600204E68 /* Dictionary+Basic.swift */; };
+		26D7E6B5280A870600204E68 /* String+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7E6B4280A870600204E68 /* String+Basic.swift */; };
+		26D7E6B8280A8C1900204E68 /* UInt+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7E6B7280A8C1900204E68 /* UInt+Basic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,12 +38,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2607B69D283A3CCC00FBC355 /* private_pkcs1.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = private_pkcs1.pem; sourceTree = "<group>"; };
+		2607B69E283A3CCC00FBC355 /* public_pkcs1.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = public_pkcs1.pem; sourceTree = "<group>"; };
+		2607B6A1283BAE6300FBC355 /* DeveloperCertification.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = DeveloperCertification.cer; sourceTree = "<group>"; };
+		2639AC5D280E61D1004A2556 /* Date+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Basic.swift"; sourceTree = "<group>"; };
+		2639AC61280FF1E5004A2556 /* Data+SecKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+SecKey.swift"; sourceTree = "<group>"; };
+		2639AC662814011C004A2556 /* SecCertificate+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecCertificate+Basic.swift"; sourceTree = "<group>"; };
 		26D13F4C2807B70D0066521C /* WHFoundationExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WHFoundationExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D13F4F2807B70D0066521C /* WHFoundationExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WHFoundationExtension.h; sourceTree = "<group>"; };
 		26D13F502807B70D0066521C /* WHFoundationExtension.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WHFoundationExtension.docc; sourceTree = "<group>"; };
 		26D13F562807B70D0066521C /* WHFoundationExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WHFoundationExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D13F5B2807B70D0066521C /* WHFoundationExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WHFoundationExtensionTests.swift; sourceTree = "<group>"; };
-		26D13F682807B7970066521C /* Data+Sub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Sub.swift"; sourceTree = "<group>"; };
+		26D13F682807B7970066521C /* Data+Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Basic.swift"; sourceTree = "<group>"; };
+		26D13F6C28090EA40066521C /* Data+CommonCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CommonCrypto.swift"; sourceTree = "<group>"; };
+		26D13F71280928AD0066521C /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		26D13F73280977090066521C /* String+UrlEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UrlEncoding.swift"; sourceTree = "<group>"; };
+		26D7E6AB280A82AB00204E68 /* String+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Color.swift"; sourceTree = "<group>"; };
+		26D7E6B2280A865600204E68 /* Dictionary+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Basic.swift"; sourceTree = "<group>"; };
+		26D7E6B4280A870600204E68 /* String+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Basic.swift"; sourceTree = "<group>"; };
+		26D7E6B7280A8C1900204E68 /* UInt+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UInt+Basic.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2639AC65281400FA004A2556 /* Certificate */ = {
+			isa = PBXGroup;
+			children = (
+				2639AC662814011C004A2556 /* SecCertificate+Basic.swift */,
+			);
+			path = Certificate;
+			sourceTree = "<group>";
+		};
 		26D13F422807B70D0066521C = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +118,9 @@
 			isa = PBXGroup;
 			children = (
 				26D13F5B2807B70D0066521C /* WHFoundationExtensionTests.swift */,
+				2607B69D283A3CCC00FBC355 /* private_pkcs1.pem */,
+				2607B69E283A3CCC00FBC355 /* public_pkcs1.pem */,
+				2607B6A1283BAE6300FBC355 /* DeveloperCertification.cer */,
 			);
 			path = WHFoundationExtensionTests;
 			sourceTree = "<group>";
@@ -91,6 +128,12 @@
 		26D13F662807B7970066521C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				2639AC65281400FA004A2556 /* Certificate */,
+				26D7E6B6280A8BE500204E68 /* ByteOrder */,
+				26D7E6B1280A83B600204E68 /* Date */,
+				26D7E6B0280A839B00204E68 /* Dictionary */,
+				26D7E6AE280A831800204E68 /* Array */,
+				26D13F6E28090EC80066521C /* String */,
 				26D13F672807B7970066521C /* Data */,
 			);
 			path = Source;
@@ -99,9 +142,53 @@
 		26D13F672807B7970066521C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				26D13F682807B7970066521C /* Data+Sub.swift */,
+				26D13F682807B7970066521C /* Data+Basic.swift */,
+				26D13F6C28090EA40066521C /* Data+CommonCrypto.swift */,
+				2639AC61280FF1E5004A2556 /* Data+SecKey.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		26D13F6E28090EC80066521C /* String */ = {
+			isa = PBXGroup;
+			children = (
+				26D7E6B4280A870600204E68 /* String+Basic.swift */,
+				26D13F71280928AD0066521C /* String+Date.swift */,
+				26D13F73280977090066521C /* String+UrlEncoding.swift */,
+				26D7E6AB280A82AB00204E68 /* String+Color.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		26D7E6AE280A831800204E68 /* Array */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Array;
+			sourceTree = "<group>";
+		};
+		26D7E6B0280A839B00204E68 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				26D7E6B2280A865600204E68 /* Dictionary+Basic.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		26D7E6B1280A83B600204E68 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				2639AC5D280E61D1004A2556 /* Date+Basic.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		26D7E6B6280A8BE500204E68 /* ByteOrder */ = {
+			isa = PBXGroup;
+			children = (
+				26D7E6B7280A8C1900204E68 /* UInt+Basic.swift */,
+			);
+			path = ByteOrder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +290,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2607B69F283A3D4000FBC355 /* private_pkcs1.pem in Resources */,
+				2607B6A2283BAE6300FBC355 /* DeveloperCertification.cer in Resources */,
+				2607B6A0283A3D4000FBC355 /* public_pkcs1.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +303,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26D13F692807B7970066521C /* Data+Sub.swift in Sources */,
+				26D7E6B8280A8C1900204E68 /* UInt+Basic.swift in Sources */,
+				26D13F74280977090066521C /* String+UrlEncoding.swift in Sources */,
+				26D13F692807B7970066521C /* Data+Basic.swift in Sources */,
 				26D13F512807B70D0066521C /* WHFoundationExtension.docc in Sources */,
+				2639AC672814011C004A2556 /* SecCertificate+Basic.swift in Sources */,
+				26D7E6B3280A865600204E68 /* Dictionary+Basic.swift in Sources */,
+				2639AC62280FF1E5004A2556 /* Data+SecKey.swift in Sources */,
+				26D13F72280928AD0066521C /* String+Date.swift in Sources */,
+				26D7E6B5280A870600204E68 /* String+Basic.swift in Sources */,
+				26D7E6AC280A82AB00204E68 /* String+Color.swift in Sources */,
+				26D13F6D28090EA40066521C /* Data+CommonCrypto.swift in Sources */,
+				2639AC5E280E61D1004A2556 /* Date+Basic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5MYJ23X4AP;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -376,7 +476,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wwh.WHFoundationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -391,7 +491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5MYJ23X4AP;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -406,7 +506,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wwh.WHFoundationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
