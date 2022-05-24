@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "WHFoundationExtension"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "A extension of foundation framework."
   
   spec.homepage     = "https://github.com/harleyAnHui/WHFoundationExtension"
@@ -20,9 +20,9 @@ Pod::Spec.new do |spec|
  
   spec.platform     = :ios, "13.0"
 
-  spec.source       = { :git => "git@github.com:harleyAnHui/WHFoundationExtension.git", :tag => "0.0.1" }
+  spec.source       = { :git => "git@github.com:harleyAnHui/WHFoundationExtension.git", :tag => "0.0.2" }
 
-  spec.source_files  = "WHFoundationExtension/Source/Data/*.swift"
+  spec.source_files  = "WHFoundationExtension/Source/**/*.swift"
 
   # spec.vendored_frameworks = 'WHFoundationExtension/WHFoundationExtension.framework'
 
