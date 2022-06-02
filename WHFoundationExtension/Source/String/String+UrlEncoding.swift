@@ -13,7 +13,7 @@ extension String {
     ///
     /// Returns nil if the string doesn’t represent a valid URL. For example, an empty string or one containing characters that are illegal in a URL produces nil.
     ///
-    var asURL: URL? {
+    public var asURL: URL? {
         return URL(string: self)
     }
     
@@ -21,7 +21,7 @@ extension String {
     ///
     /// - Returns: a string encoded by calling 'addingPercentEncoding(withAllowedCharacters:)', or nil if this string can't be percent-encoded.
     ///
-    func urlEncoding() -> String? {
+    public func urlEncoding() -> String? {
         guard let (scheme, host, port, path, query, anchor) = URLcomponents() else {
             return nil
         }
@@ -72,7 +72,7 @@ extension String {
     ///
     /// reference to: https://zhuanlan.zhihu.com/p/58479085
     ///
-    func URLcomponents() -> (scheme: String, host: String, port: String?, path: String?, query: String?, anchor: String?)? {
+    public func URLcomponents() -> (scheme: String, host: String, port: String?, path: String?, query: String?, anchor: String?)? {
         guard let schemeRange = self.range(of: "://") else { return nil }
         
         let scheme = String(self[..<schemeRange.upperBound])

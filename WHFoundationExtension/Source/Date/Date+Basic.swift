@@ -23,7 +23,7 @@ extension Date {
     /// - Parameter formatStyle: a specified format style. 'DateFormatStyle.local' as default
     /// - Returns: a string representation of the 'Date'
     ///
-    func string(with formatStyle: DateFormatStyle = DateFormatStyle.pattern1) -> String {
+    public func string(with formatStyle: DateFormatStyle = DateFormatStyle.pattern1) -> String {
         return string(with: formatStyle.rawValue)
     }
     
@@ -32,7 +32,7 @@ extension Date {
     /// - Parameter dataFormat: a format string, for example: "yyyy-MM-dd HH:mm:ss"
     /// - Returns: a string representation of the 'Date'
     /// 
-    func string(with dataFormat: String) -> String {
+    public func string(with dataFormat: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dataFormat
         formatter.locale = Locale.current

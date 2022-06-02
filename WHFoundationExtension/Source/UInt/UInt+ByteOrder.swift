@@ -23,7 +23,7 @@ extension UInt16 {
     ///   - offset: to start index of the Data, default is zero.
     ///   - bigEndian: true indicate the given 'Data' will be encoded in big-endian byte ordering. false in Little-Endian byte ordering.
     ///
-    init?(data: Data, offset: Int = 0, bigEndian: Bool = true) {
+    public  init?(data: Data, offset: Int = 0, bigEndian: Bool = true) {
         guard offset + 2 <= data.count else {
             return nil
         }
@@ -40,7 +40,7 @@ extension UInt16 {
     /// - Parameter bigEndian: true indicate 'self' will be  encoded in big-endian byte ordering. false in Little-Endian byte ordering. Default true.
     /// - Returns: a 'Data' only containing two bytes
     ///
-    func data(bigEndian: Bool = true) -> Data {
+    public func data(bigEndian: Bool = true) -> Data {
         let big = UInt8((self & 0xff00) >> 8)
         let little = UInt8(self & 0x00ff)
 
@@ -60,7 +60,7 @@ extension UInt32 {
     ///   - offset: to start index of the Data, default is zero.
     ///   - bigEndian: true indicate the given 'Data' will be encoded in big-endian byte ordering. false in Little-Endian byte ordering. Default true.
     ///
-    init?(data: Data, offset: Int = 0, bigEndian: Bool = true) {
+    public init?(data: Data, offset: Int = 0, bigEndian: Bool = true) {
         guard offset + 4 <= data.count else {
             return nil
         }
@@ -81,7 +81,7 @@ extension UInt32 {
     /// - Parameter bigEndian: true indicate 'self' will be  encoded in big-endian byte ordering. false in Little-Endian byte ordering. Default true.
     /// - Returns: a 'Data' only containing four bytes
     ///
-    func data(bigEndian: Bool = true) -> Data {
+    public func data(bigEndian: Bool = true) -> Data {
         let first = UInt8((self & 0xff000000) >> 24)
         let second = UInt8((self & 0x00ff0000) >> 16)
         let third = UInt8((self & 0x0000ff00) >> 8)
@@ -102,7 +102,7 @@ extension UInt64 {
     ///   - offset: to start index of the Data, default is zero.
     ///   - bigEndian: true indicate the given 'Data' will be encoded in big-endian byte ordering. false in Little-Endian byte ordering. Default true.
     ///
-    init?(data: Data, offset: Int = 0, bigEndian: Bool = true) {
+    public init?(data: Data, offset: Int = 0, bigEndian: Bool = true) {
         guard offset + 8 <= data.count else {
             return nil
         }
@@ -123,7 +123,7 @@ extension UInt64 {
     /// - Parameter bigEndian: true indicate 'self' will be  encoded in big-endian byte ordering. false in Little-Endian byte ordering. Default true.
     /// - Returns: a 'Data' only containing four bytes
     ///
-    func data(bigEndian: Bool = true) -> Data {
+    public func data(bigEndian: Bool = true) -> Data {
         let first = UInt8((self & 0xff00000000000000) >> 56)
         let second = UInt8((self & 0x00ff000000000000) >> 48)
         let third = UInt8((self & 0x0000ff0000000000) >> 40)

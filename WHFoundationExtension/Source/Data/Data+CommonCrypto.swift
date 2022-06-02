@@ -153,7 +153,7 @@ extension Data {
     /// Gemerate a hash value for this 'Data', following the given digest type.
     /// - Parameter type: a digest type, see 'SecurityDigestType'
     /// - Returns: a hash value for this 'Data'.
-    func digest(using type: SecurityDigestType) throws -> Data {
+    public func digest(using type: SecurityDigestType) throws -> Data {
         switch type {
         case .SHA1:
             return try SHA1()
@@ -359,7 +359,7 @@ extension Data {
     /// - Returns: a cipher data
     /// - Throws: thow a SecurityError  while encryption failed.
     ///
-    func encrypt(alg: SecurityAlgorithm, mode: SecurityMode, padding: SecurityPadding, key: Data, iv: Data) throws -> Data {
+    public func encrypt(alg: SecurityAlgorithm, mode: SecurityMode, padding: SecurityPadding, key: Data, iv: Data) throws -> Data {
         guard alg.isSupported else {
             throw SecurityError.CryptAlgorithmNotSupported
         }
@@ -379,7 +379,7 @@ extension Data {
     /// - Returns: a plain data
     /// - Throws: a SecurityError  while encryption failed.
     ///
-    func decrypt(alg: SecurityAlgorithm, mode: SecurityMode, padding: SecurityPadding, key: Data, iv: Data) throws -> Data {
+    public func decrypt(alg: SecurityAlgorithm, mode: SecurityMode, padding: SecurityPadding, key: Data, iv: Data) throws -> Data {
         guard alg.isSupported else {
             throw SecurityError.CryptAlgorithmNotSupported
         }

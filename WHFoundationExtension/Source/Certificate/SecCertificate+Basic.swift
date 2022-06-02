@@ -21,7 +21,7 @@ extension SecCertificate {
     /// - Returns: a instance of SecCertificate or nil on failure
     /// - Throws: an error in the Cocoa domain, if 'path' can't read.
     ///
-    static func create(contentOf path: String) throws -> SecCertificate? {
+    public static func create(contentOf path: String) throws -> SecCertificate? {
         let url = URL(fileURLWithPath: path)
         let data = try Data(contentsOf: url)
         return create(with: data)
@@ -33,7 +33,7 @@ extension SecCertificate {
     /// - Parameter data: DER representation as a Data
     /// - Returns: a instance of SecCertificate or nil on failure
     ///
-    static func create(with data: Data) -> SecCertificate? {
+    public static func create(with data: Data) -> SecCertificate? {
         let cfData = data as CFData
         return SecCertificateCreateWithData(kCFAllocatorDefault, cfData)
     }
@@ -48,7 +48,7 @@ extension SecCertificate {
     ///
     /// Return nil on failure.
     ///
-    var subjectSummary: String? {
+    public var subjectSummary: String? {
         ///'self', a reference to the certificate from which to derive the subject summary string.
         return SecCertificateCopySubjectSummary(self) as? String
     }
@@ -57,7 +57,7 @@ extension SecCertificate {
     ///
     /// Return nil on failure.
     ///
-    var subjectCommonName: String? {
+    public var subjectCommonName: String? {
         let pointer = UnsafeMutablePointer<CFString?>.allocate(capacity: 8)
         defer {
             pointer.deallocate()
@@ -75,7 +75,7 @@ extension SecCertificate {
     ///
     /// Return nil on failure or no any email address in the certification.
     ///
-    var emailAddresses: [String]? {
+    public var emailAddresses: [String]? {
         let pointer = UnsafeMutablePointer<CFArray?>.allocate(capacity: 32)
         defer {
             pointer.deallocate()
@@ -110,7 +110,7 @@ extension SecCertificate {
     ///
     /// The content returned is a DER-encoded X.509 distinguished name
     ///
-    var issuer: Data? {
+    public var issuer: Data? {
         guard let cfData = SecCertificateCopyNormalizedIssuerSequence(self) else {
             return nil
         }
@@ -124,7 +124,7 @@ extension SecCertificate {
     ///
     ///The content returned is a DER-encoded X.509 distinguished name
     ///
-    var subject: Data? {
+    public var subject: Data? {
         guard let cfData = SecCertificateCopyNormalizedSubjectSequence(self) else {
             return nil
         }
@@ -136,7 +136,7 @@ extension SecCertificate {
     
     /// Retrieves the public key from this certificate.
     ///
-    var publicKey: SecKey? {
+    public var publicKey: SecKey? {
         guard let key = SecCertificateCopyKey(self) else {
             return nil
         }
@@ -147,7 +147,7 @@ extension SecCertificate {
     
     /// Return the certificate's serial number.
     ///
-    var serialNumber: String? {
+    public var serialNumber: String? {
         let error: UnsafeMutablePointer<Unmanaged<CFError>?> = UnsafeMutablePointer<Unmanaged<CFError>?>.allocate(capacity: 8)
         defer {
             error.deallocate()

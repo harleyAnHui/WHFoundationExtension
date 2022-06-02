@@ -15,7 +15,7 @@ extension String {
     ///
     /// Return nil if this string can't be encoded as a C string
     ///
-    var dataFromHexString: Data? {
+    public var dataFromHexString: Data? {
         guard let chars = cString(using: String.Encoding.utf8) else { return nil }
         
         let count = self.count
@@ -38,7 +38,7 @@ extension String {
     ///
     /// Return nil if this string can't be encoded as a 'Dictionary'
     ///
-    var dictionary: Dictionary<String, String>? {
+    public var dictionary: Dictionary<String, String>? {
         guard let data = self.data(using: .utf8) else { return nil }
         
         guard let jsonObject = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, String> else { return nil }
@@ -51,7 +51,7 @@ extension String {
     /// First this string is encoded as 'Data' using '.utf8', then call  'base64EncodedString()'
     /// Return nil if encoding failed.
     ///
-    var base64EncodedString: String? {
+    public var base64EncodedString: String? {
         let data = data(using: .utf8)
         
         return data?.base64EncodedString()
@@ -61,7 +61,7 @@ extension String {
     ///
     /// First this string is encoded as 'Data' using '.utf8', then call 'base64EncodedData'
     /// Return nil if encode failed.
-    var base64EncodedData: Data? {
+    public var base64EncodedData: Data? {
         let data = data(using: .utf8)
         
         return data?.base64EncodedData
@@ -71,7 +71,7 @@ extension String {
     ///
     /// First this string is encoded as 'Data' using '.utf8', then decode this 'Data' by calling 'base64DecodedString'
     /// Return nil if decoding failed.
-    var base64DecodedString: String? {
+    public var base64DecodedString: String? {
         let data = data(using: .utf8)
         
         return data?.base64DecodedString
@@ -81,7 +81,7 @@ extension String {
     ///
     /// First self is encoded as 'Data' using '.utf8', then decode this 'Data' by calling 'base64DecodedData'
     /// Return nil if decoding failed.
-    var base64DecodedData: Data? {
+    public var base64DecodedData: Data? {
         let data = data(using: .utf8)
 
         return data?.base64DecodedData

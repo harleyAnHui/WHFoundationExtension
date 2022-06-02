@@ -53,7 +53,7 @@ extension Data {
     /// Create an instance of  'SecKey' from this 'Data' which representing a public key
     /// Return nil on failure
     ///
-    var publicKey: SecKey? {
+    public var publicKey: SecKey? {
         //keyData CFData representing the key. The format of the data is PKCS#1 format.
         let keyCFData = self.cfData
         
@@ -76,7 +76,7 @@ extension Data {
     /// Create an instance of  'SecKey' from this 'Data' which representing a private key
     /// Return nil on failure
     ///
-    var privateKey: SecKey? {
+    public var privateKey: SecKey? {
         //keyData CFData representing the key. The format of the data is PKCS#1 format.
         let keyCFData = self.cfData
         
@@ -102,7 +102,7 @@ extension Data {
     /// - Returns: a key pair which representing a public key and a private key.
     /// - Throws: thow an error while creating failed.
     ///
-    static func createRSAKeyPair(_ bits: Int) throws -> (SecKey, SecKey) {
+    public static func createRSAKeyPair(_ bits: Int) throws -> (SecKey, SecKey) {
         let tag = "com.WHfoundationExtension.keys.rsa".data(using: .utf8)
         let attributes = [
             kSecAttrKeyType: kSecAttrKeyTypeRSA,
@@ -131,7 +131,7 @@ extension Data {
     /// - Returns:a cipher data
     /// - Throws: thow a SecKeyError while enrypt failed.
     ///
-    func encrypt(with publicKey: SecKey) throws -> Data? {
+    public func encrypt(with publicKey: SecKey) throws -> Data? {
         let plainCFData = self.cfData
 
         var error: Unmanaged<CFError>?
@@ -172,7 +172,7 @@ extension Data {
     /// - Returns: an ciphered 'Data' or nil on failure
     /// - Throws: thow an error while enrypt failed.
     ///
-    func encrypt(with KeyData: Data) throws -> Data? {
+    public func encrypt(with KeyData: Data) throws -> Data? {
         guard let publicKey = KeyData.publicKey else {
             throw SecKeyError.createKeyError
         }
@@ -180,7 +180,7 @@ extension Data {
         return try encrypt(with: publicKey)
     }
     
-    func decrpt(with privateKey: SecKey) throws -> Data? {
+    public func decrpt(with privateKey: SecKey) throws -> Data? {
         let cipherCFData = self.cfData
         var error: Unmanaged<CFError>?
         let blockSize = SecKeyGetBlockSize(privateKey)
@@ -216,7 +216,7 @@ extension Data {
     /// - Returns: an ciphered 'Data' or nil on failure
     /// - Throws: thow an error while decrypt failed.
     ///
-    func decrypt(with KeyData: Data) throws -> Data? {
+    public func decrypt(with KeyData: Data) throws -> Data? {
         guard let privateKey = KeyData.privateKey else {
             throw SecKeyError.createKeyError
         }
@@ -234,7 +234,7 @@ extension Data {
     /// - Returns:a data representing signature or nil on failure.
     /// - Throws: thow an error while sign failed.
     ///
-    func signature(with privateKey: SecKey, digestType: SecurityDigestType) throws -> Data? {
+    public func signature(with privateKey: SecKey, digestType: SecurityDigestType) throws -> Data? {
         guard isValidLength(for: digestType) else {
             throw SecKeyError.InvalidParams
         }
@@ -263,7 +263,7 @@ extension Data {
     ///
     /// - Throws: thow an error while keyData can't be as a public key.
     ///
-    func verifySignature(with publicKey: SecKey, dataToSign: Data, digestType: SecurityDigestType) throws -> Bool {
+    public func verifySignature(with publicKey: SecKey, dataToSign: Data, digestType: SecurityDigestType) throws -> Bool {
         let signedCFData = dataToSign.cfData
         
         let signatureCFData = self.cfData

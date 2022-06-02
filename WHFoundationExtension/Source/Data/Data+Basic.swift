@@ -12,12 +12,12 @@ extension Data {
     /// Return a string representation of 'Data'.
     /// - Parameter encoding: a type of encoding string. Default is '.utf8'
     /// - Returns: a optional string.  return nil if encoding failed
-    func asString(encoding: String.Encoding = .utf8) -> String? {
+    public func asString(encoding: String.Encoding = .utf8) -> String? {
         return String(data: self, encoding: encoding)
     }
     
     /// Return a hexdecimal string which is uppercased.
-    var hexString: String {
+    public var hexString: String {
         return reduce("") {
             $0 + String(format: "%02x", $1)
         }.uppercased()
@@ -30,7 +30,7 @@ extension Data {
     ///     print(hex) // "1A-23-FF"
     /// - Parameter delimiters: a given string
     /// - Returns: a hexdecimal string which is uppercased.
-    func hexString(with delimiters: String) -> String {
+    public func hexString(with delimiters: String) -> String {
         guard self.count != 0 else {
             return ""
         }
@@ -48,7 +48,7 @@ extension Data {
     ///
     /// - Parameter data: data to be searched for
     /// - Returns: Return true, if this 'data' start with the given 'data'.
-    func hasPrefix(data: Data?) -> Bool {
+    public func hasPrefix(data: Data?) -> Bool {
         guard let wrappedData = data else {
             return false
         }
@@ -69,7 +69,7 @@ extension Data {
     ///
     /// - Parameter data: data to be matched
     /// - Returns: Return true, if this 'data' end with the given 'data'.
-    func hasSuffix(data: Data?) -> Bool {
+    public func hasSuffix(data: Data?) -> Bool {
         guard let wrappedData = data else {
             return false
         }
@@ -89,7 +89,7 @@ extension Data {
     /// Find the data to be contained in the content of this data.
     /// - Parameter data: the data to be matched, it is an optional type.
     /// - Returns: a 'Bool' type, it is true if this data did contains the data to be matched.
-    func contains(data: Data?) -> Bool {
+    public func contains(data: Data?) -> Bool {
         guard data != nil else {
             return false
         }
@@ -110,7 +110,7 @@ extension Data {
     ///   - startIndex: The location of start for searching
     /// - Returns: An 'Data' array. The 'Data' in this array should start with 'prefixData', except that self doesn't contains 'prefixData'
     /// - Complexity: O(*m*), where *m* is the byte count of this data.
-    func components(separatedBy prefixData: Data, startIndex:Data.Index) -> [Data] {
+    public func components(separatedBy prefixData: Data, startIndex:Data.Index) -> [Data] {
         var elements: [Data] = [Data]()
         
         var currentIndex = startIndex
@@ -154,7 +154,7 @@ extension Data {
     ///   - startIndex: The location of start for searching
     /// - Returns: A 'Range' specifying the location of the found data.
     /// - Complexity: O(*n* + *m*), where *n* is count of this 'datasToFind' and where *m* is the byte count of this data.
-    func range(of datasToFind: [Data], startIndex: Data.Index) -> Range<Data.Index>? {
+    public func range(of datasToFind: [Data], startIndex: Data.Index) -> Range<Data.Index>? {
         var firstRanges:[Range<Data.Index>] = []
         
         for dataToFind in datasToFind {
@@ -195,19 +195,19 @@ extension Data {
     }
     
     /// Convert self to 'NSData'
-    var nsData: NSData {
+    public var nsData: NSData {
         return self as NSData
     }
     
     /// Convert self to 'CFData'
-    var cfData: CFData {
+    public var cfData: CFData {
         return self as CFData
     }
     
     
     /// Returns a Base-64 encoded 'Data'
     /// First get a Base-64 encoded string from self, then encode the string using '.utf8'
-    var base64EncodedData: Data? {
+    public var base64EncodedData: Data? {
         return base64EncodedString().data(using: .utf8)
     }
     
@@ -215,7 +215,7 @@ extension Data {
     /// This data  is a Base-64 encoded `Data`.
     ///
     /// Returns nil when self is not recognized as valid Base-64 'Data' or the Decoded 'Data' can't be encoded as 'String'
-    var base64DecodedString: String? {
+    public var base64DecodedString: String? {
         let decodedData = Data(base64Encoded: self)
         return decodedData?.asString()
     }
@@ -224,7 +224,7 @@ extension Data {
     /// This data  is a Base-64 encoded `Data`.
     ///
     /// Returns nil when self is not recognized as valid Base-64 'Data'.
-    var base64DecodedData: Data? {
+    public var base64DecodedData: Data? {
         return Data(base64Encoded: self)
     }
 }
