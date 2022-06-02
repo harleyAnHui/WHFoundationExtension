@@ -112,8 +112,8 @@ do {
 	/// Encrypt or Decrypt
 	let plain = "0123456789".data(using: .utf8)!
 	let key16 = "0123456789abcedf".data(using: .utf8)!
-    let iv16 = "0123456789abcedf".data(using: .utf8)!
-    let encoded = try plain.encrypt(alg: SecurityAlgorithm.AES, mode: SecurityMode.CFB, padding: SecurityPadding.ISO7816Padding, key: key16, iv: iv16)
+	let iv16 = "0123456789abcedf".data(using: .utf8)!
+	let encoded = try plain.encrypt(alg: SecurityAlgorithm.AES, mode: SecurityMode.CFB, padding: SecurityPadding.ISO7816Padding, key: key16, iv: iv16)
 	let decoded = try encoded.decrypt(alg: SecurityAlgorithm.AES, mode: SecurityMode.CFB, padding: SecurityPadding.ISO7816Padding, key: key16, iv: iv16)
    
 } catch {
@@ -148,5 +148,5 @@ do {
 
 ## License
 
-WHFoundationExtension is released under the MIT license. [See LICENSE](https://github.com/Alamofire/Alamofire/blob/master/LICENSE) for details.
+WHFoundationExtension is released under the MIT license. [See LICENSE](https://github.com/harleyAnHui/WHFoundationExtension/blob/main/LICENSE) for details.
 
