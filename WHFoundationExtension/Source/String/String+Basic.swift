@@ -8,35 +8,13 @@
 import Foundation
 
 extension String {
-    private var _dataFromHexString: Data? {
-        var data: Data?
-        var cursor = self.startIndex
-        while cursor < self.endIndex {
-            let range = cursor..<self.index(cursor, offsetBy: 2)
-            guard range.upperBound <= self.endIndex else {
-                break
-            }
-            
-            let subString = self[range].uppercased()
-            var intValue: Int = 0
-            if Scanner(string: subString).scanInt(&intValue) {
-                if data == nil {
-                    data = Data()
-                }
-                data!.append(Data([UInt8(intValue)]))
-            }
-            
-            cursor = self.index(cursor, offsetBy: 2)
-        }
-        
-        return data
-    }
-    
-    /// Get a 'Data' from this ‘String’ which is composed of some hexdecimal numbers
-    ///     let hex = "15a3bcff"
-    ///     let data = hex.dataFromHexString
+    /// Get a 'Data' from this ‘String’ which is composed of some hexdecimal numbers.
+    ///     let hexString = "15a3bcff"
+    ///     let data = hexString.dataFromHexString
     ///     print(data) // Data([0x15, 0xa3, 0xbc, 0xff])
+    ///
     /// Return nil if this string can't be encoded as a C string
+    ///
     var dataFromHexString: Data? {
         guard let chars = cString(using: String.Encoding.utf8) else { return nil }
         
@@ -55,6 +33,11 @@ extension String {
     }
     
     /// Return a "Dictionary<String, String>"
+    ///     let jsonString = "{\"url\" : \"https://www.baidu.com\", \"name\" : \"harley\", \"id\" : \"1000001\", \"sex\" : \"male\"}"
+    ///     let dict = jsonString.dictionary
+    ///
+    /// Return nil if this string can't be encoded as a 'Dictionary'
+    ///
     var dictionary: Dictionary<String, String>? {
         guard let data = self.data(using: .utf8) else { return nil }
         
@@ -67,6 +50,7 @@ extension String {
     ///
     /// First this string is encoded as 'Data' using '.utf8', then call  'base64EncodedString()'
     /// Return nil if encoding failed.
+    ///
     var base64EncodedString: String? {
         let data = data(using: .utf8)
         
@@ -93,7 +77,7 @@ extension String {
         return data?.base64DecodedString
     }
     
-    /// Return a Base-64 decoded `String` .
+    /// Return a Base-64 decoded `Data` .
     ///
     /// First self is encoded as 'Data' using '.utf8', then decode this 'Data' by calling 'base64DecodedData'
     /// Return nil if decoding failed.

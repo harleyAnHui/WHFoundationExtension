@@ -8,6 +8,10 @@
 import Foundation
 
 extension Dictionary {
+    /// Generate a json string from 'self' a 'Dictionary' type
+    ///
+    /// Return nil if this object can't produce a 'Data'
+    ///
     var jsonString: String? {
         guard let data = try? JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.prettyPrinted) else {
             return nil

@@ -9,7 +9,7 @@ import Foundation
 import Security
 import CommonCrypto
 
-enum SecKeyError: Error {
+public enum SecKeyError: Error {
     case createKeyError
     case InvalidParams
     case CreateEncryptedDataError
@@ -18,11 +18,10 @@ enum SecKeyError: Error {
 }
 
 // reference: https://github.com/ideawu/Objective-C-RSA/blob/master/RSA.m
-
 /**
  "-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEArb6rlir9rESq2iKsl1aukS+/7gyZ7PzPUssa3arhI2yPOyEC+0RA\nvT6pTsrf4y2YcU5KprHyEGD71YL0+yrBm8MCWr6cky3REbth7NFL1VBasEueil9X\nHBglgjwD1sJzWFeBYDZoKBNeZKyDQIyLyj6jSdq9PoU8JksvN4fQg7LhO7b24FUl\nDIW6H/b1Mb1HQS68c66Ny6J/cbePYBdkqSfzk9/e8D5/z9kRyb/Erw8qqgHbHgde\nwzEtcXH5hlD1LJMEfVyeVjCPoHwZdXvGAWI9CWTwi+zKkKm0EL6XGb0QlagakX2X\nby2XHJxeOYArxwKXZptBMh1s/a1FReLPwwIDAQAB\n-----END RSA PUBLIC KEY-----\n"
  **/
-struct SecKeyPem {
+public struct SecKeyPem {
     let pem: String
     let begin: String = "-----BEGIN"
     let end: String = "-----END"
@@ -33,7 +32,7 @@ struct SecKeyPem {
         guard let start = pem.range(of: bodyStart), let end = pem.range(of: bodyEnd) else {
             return nil
         }
-        return pem.substring(with: start.upperBound..<end.lowerBound).replacingOccurrences(of: "\n", with: "")
+        return pem[start.upperBound..<end.lowerBound].replacingOccurrences(of: "\n", with: "")
     }
     
     init?(path: String) {
@@ -98,16 +97,18 @@ extension Data {
     
     
     /// This is a class method. Create a key pair of RSA with the given bits.
+    /// 
     /// - Parameter bits: the number of bits of the key
     /// - Returns: a key pair which representing a public key and a private key.
     /// - Throws: thow an error while creating failed.
+    ///
     static func createRSAKeyPair(_ bits: Int) throws -> (SecKey, SecKey) {
         let tag = "com.WHfoundationExtension.keys.rsa".data(using: .utf8)
         let attributes = [
             kSecAttrKeyType: kSecAttrKeyTypeRSA,
             kSecAttrKeySizeInBits: bits,
             kSecPrivateKeyAttrs: [
-//                kSecAttrIsPermanent: true,  /// error will occurs when running it in unit test.
+//                kSecAttrIsPermanent: true,  /// comment this line because it will make 'SecKeyCreateRandomKey' fail when running it in unit test.
                 kSecAttrApplicationTag: tag as Any
             ] as [CFString : Any]
         ] as [CFString : Any]
@@ -124,12 +125,22 @@ extension Data {
         return (pubicKey, privateKey)
     }
     
+    /// Encrypt this 'Data' with the public key
+    ///
+    /// - Parameter publicKey: an instance of SecKey
+    /// - Returns:a cipher data
+    /// - Throws: thow a SecKeyError while enrypt failed.
+    ///
     func encrypt(with publicKey: SecKey) throws -> Data? {
         let plainCFData = self.cfData
 
         var error: Unmanaged<CFError>?
         let blockSize = SecKeyGetBlockSize(publicKey)
         let blockPointer = UnsafeMutablePointer<UInt8>.allocate(capacity: blockSize)
+        defer {
+            blockPointer.deallocate()
+        }
+        
         var cipherData: Data?
         let plainCFDataLen = CFDataGetLength(plainCFData)
         let maxLength = blockSize - paddingLength(for: SecKeyAlgorithm.rsaEncryptionPKCS1)
@@ -150,13 +161,12 @@ extension Data {
                 cipherData?.append(CFDataGetBytePtr(cfData), count: CFDataGetLength(cfData))
             }
         }
-        
-        blockPointer.deallocate()
 
         return cipherData
     }
     
-    /// Encrypt this 'Data' with the public key
+    /// Encrypt this 'Data' with 'KeyData' representing the public key
+    ///
     /// - Parameters:
     ///   - KeyData: an instance of 'Data' which representing a public key.
     /// - Returns: an ciphered 'Data' or nil on failure
@@ -266,6 +276,7 @@ extension Data {
     
     
     /// Get the length of padding according to given algorithm
+    ///
     /// - Parameter alg: One of SecKeyAlgorithm constants
     /// - Returns: the length of padding
     private func paddingLength(for alg: SecKeyAlgorithm) -> Int {
@@ -280,6 +291,7 @@ extension Data {
     }
     
     /// Check the length of this Data which representing a diggest.
+    ///
     /// - Parameter digestType: a diggest type. reference to 'SecurityDigestType'
     /// - Returns: true if the length of this data is equals to the length of given digest type. else return false.
     ///
@@ -300,6 +312,7 @@ extension Data {
     }
     
     /// Return a RSA sign algorithm which is type of 'SecKeyAlgorithm' with given diggest type
+    /// 
     /// - Parameter digestType: a diggest type. reference to 'SecurityDigestType'
     /// - Returns: a kind of 'SecKeyAlgorithm'
     ///
